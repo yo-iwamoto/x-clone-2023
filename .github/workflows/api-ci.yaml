@@ -29,10 +29,10 @@ jobs:
           run_install: true
 
       - name: Typecheck
-        run: pnpm run --filter @x-clone-2023/web typecheck
+        run: pnpm run --filter @x-clone-2023/api typecheck
 
       - name: Lint
-        run: pnpm run --filter @x-clone-2023/web lint
+        run: pnpm run --filter @x-clone-2023/api lint
 
       - name: Test
-        run: pnpm run --filter @x-clone-2023/web test
+        run: pnpm run --filter @x-clone-2023/api test
