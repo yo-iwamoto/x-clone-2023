@@ -1,0 +1,25 @@
+{
+  "name": "@x-clone-2023/api",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "deploy": "wrangler deploy --minify src/index.ts",
+    "dev": "wrangler dev src/index.ts",
+    "format": "prettier --write src",
+    "lint": "eslint --fix src/**/*.{ts,tsx}",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "hono": "^3.7.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230914.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "@x-clone-2023/tsconfig": "workspace:*",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "wrangler": "^3.9.0"
+  }
+}
