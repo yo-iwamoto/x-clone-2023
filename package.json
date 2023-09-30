@@ -1,0 +1,16 @@
+{
+  "name": "x-clone-2023",
+  "private": true,
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "devDependencies": {
+    "turbo": "^1.10.14"
+  },
+  "packageManager": "pnpm@8.8.0"
+}

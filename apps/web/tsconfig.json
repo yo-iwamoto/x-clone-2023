@@ -1,0 +1,26 @@
+{
+  "extends": "@x-clone-2023/tsconfig/base.json",
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "jsx": "preserve",
+    "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "types": ["vitest/globals"],
+    "plugins": [{ "name": "next" }]
+  },
+  "include": [
+    "src",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "vitest.config.ts",
+    "tailwind.config.js",
+    "postcss.config.js",
+    "next.config.js"
+  ],
+  "exclude": ["node_modules"]
+}
