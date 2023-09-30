@@ -1,7 +1,11 @@
-name: CI
+name: CI for apps/api
 
 on:
   pull_request:
+    paths:
+      - 'apps/api/**/*'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
   push:
     branches: [main]
 
@@ -25,13 +29,10 @@ jobs:
           run_install: true
 
       - name: Typecheck
-        run: pnpm run --filter @x-clone-2023/web typecheck
+        run: pnpm run --filter @x-clone-2023/api typecheck
 
       - name: Lint
-        run: pnpm run --filter @x-clone-2023/web lint
+        run: pnpm run --filter @x-clone-2023/api lint
 
       - name: Test
-        run: pnpm run --filter @x-clone-2023/web test
-
-      - name: Build
-        run: pnpm run --filter @x-clone-2023/web build
+        run: pnpm run --filter @x-clone-2023/api test
