@@ -16,5 +16,6 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['html', 'clover'],
     },
+    restoreMocks: true,
   },
 });
