@@ -28,6 +28,9 @@ jobs:
           version: 8
           run_install: true
 
+      - name: Generate Prisma Client
+        run: pnpm run --filter @x-clone-2023/web generate
+
       - name: Typecheck
         run: pnpm run --filter @x-clone-2023/web typecheck
 

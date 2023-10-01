@@ -8,6 +8,7 @@
     "clean": "rm -rf .next",
     "dev": "next dev",
     "format": "prettier --write src",
+    "generate": "prisma generate",
     "lint": "eslint --fix src/**/*.{ts,tsx}",
     "sb": "storybook dev -p 6006",
     "sb:build": "storybook build",
