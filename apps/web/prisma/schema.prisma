@@ -17,9 +17,9 @@ model User {
   displayName      String  @map("display_name")
   hasEmailVerified Boolean @default(false) @map("has_email_verified")
 
-  userSecret               UserSecret?
-  emailVerificationIntents EmailVerificationIntents[]
-  posts                    Post[]
+  userSecret        UserSecret?
+  posts             Post[]
+  verificationCodes VerificationCode[]
 
   @@map("users")
 }
@@ -38,18 +38,18 @@ model UserSecret {
   @@map("user_secrets")
 }
 
-model EmailVerificationIntents {
+model VerificationCode {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  token     String
+  code      String
   expiresAt DateTime @map("expires_at")
 
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("email_verification_intents")
+  @@map("verification_codes")
 }
 
 model Post {
