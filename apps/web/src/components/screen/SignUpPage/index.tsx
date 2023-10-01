@@ -1,15 +1,23 @@
 'use client';
 
-import { signUpAction } from './action';
+import { signUpAction, verifyCodeAction } from './action';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/components/ui/use-toast';
-import { useTransition } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export function SignUpPage() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
   const { toast } = useToast();
   const router = useRouter();
@@ -24,6 +32,21 @@ export function SignUpPage() {
         }
 
         toast({ title: 'Verification email sent' });
+        setIsDialogOpen(true);
+      })();
+    });
+  };
+
+  const verificationAction = (formData: FormData) => {
+    startTransition(() => {
+      (async () => {
+        const result = await verifyCodeAction(formData);
+        if (!result.success) {
+          toast({ title: result.message });
+          return;
+        }
+
+        toast({ title: 'Email verified' });
         router.push('/');
       })();
     });
@@ -59,6 +82,22 @@ export function SignUpPage() {
           Sign in
         </Link>
       </p>
+
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Email Verification</DialogTitle>
+            <DialogDescription>
+              Verification code has been sent to your email. Please check your
+              inbox and enter the code below.
+            </DialogDescription>
+          </DialogHeader>
+          <form action={verificationAction} className='grid gap-2'>
+            <Label htmlFor='code'>Verification Code</Label>
+            <Input id='code' type='number' name='code' minLength={8} required />
+          </form>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
