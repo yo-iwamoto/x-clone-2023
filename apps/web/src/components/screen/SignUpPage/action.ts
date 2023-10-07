@@ -15,6 +15,7 @@ const schema = z.object({
   password: z.string().min(8).nonempty(),
 });
 
+/** @package */
 export async function signUpAction(formData: FormData) {
   // データ検証
   const dataObj = Object.fromEntries(formData.entries());
@@ -82,6 +83,7 @@ const verifyCodeActionSchema = z.object({
   code: z.string().length(6),
 });
 
+/** @package */
 export async function verifyCodeAction(formData: FormData) {
   // データの検証
   const dataObj = Object.fromEntries(formData.entries());

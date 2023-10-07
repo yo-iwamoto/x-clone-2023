@@ -12,6 +12,7 @@ const schema = z.object({
   password: z.string().nonempty(),
 });
 
+/** @package */
 export async function signInAction(formData: FormData) {
   const dataObj = Object.fromEntries(formData.entries());
   const { email, password } = schema.parse(dataObj);
