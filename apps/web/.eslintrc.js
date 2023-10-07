@@ -15,6 +15,7 @@ module.exports = {
     'prettier',
     'plugin:storybook/recommended',
   ],
+  plugins: ['import-access'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'import/order': [
@@ -51,6 +52,7 @@ module.exports = {
         disallowTypeAnnotations: false,
       },
     ],
+    ['import-access/jsdoc']: 'error',
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {

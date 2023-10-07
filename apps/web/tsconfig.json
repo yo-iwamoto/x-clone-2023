@@ -11,7 +11,7 @@
       "@/*": ["src/*"]
     },
     "types": ["vitest/globals"],
-    "plugins": [{ "name": "next" }]
+    "plugins": [{ "name": "next" }, { "name": "eslint-plugin-import-access" }]
   },
   "include": [
     "src",
